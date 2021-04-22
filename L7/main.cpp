@@ -2,22 +2,28 @@
 #include <iostream>
 
 int main(int argc, char * argv[]) {
+    int handler = mesnyankin::createBinaryFile(argc, argv);
 
-    if (mesnyankin::createBinaryFile(argc, argv) == 1) {
+    if (handler == 1) {
         std::cout << "Error (createBinaryFile)";
         system("pause");
-        return -1;
+        return 1;
     }
 
-    if (mesnyankin::findRecord(argc, argv) == 1) {
+    handler = mesnyankin::findRecord(argc, argv);
+
+    if (handler == 1) {
         std::cout << "Error (createBinaryFile)";
         system("pause");
-        return -1;
+        return 1;
     }
 
-    if (mesnyankin::correctFile(argc, argv) == 1) {
+    handler = mesnyankin::correctFile(argc, argv);
+
+    if (handler == 1) {
         std::cout << "Error (createBinaryFile)";
         system("pause");
-        return -1;
+        return 1;
     }
+    return 0;
 }
