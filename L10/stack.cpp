@@ -75,10 +75,7 @@ void mesnyankin::output(mesnyankin::TStack*& stack) {
 
 mesnyankin::TStack* mesnyankin::freeStack(mesnyankin::TStack* stack) {
 	while (stack) {
-		//char* data = new char[40];
 		char * tmp = mesnyankin::pop(&stack);
-		//strcpy_s(data, 40, tmp);
-		//delete[] data;
 		delete[] tmp;
 	}
 	return stack;
