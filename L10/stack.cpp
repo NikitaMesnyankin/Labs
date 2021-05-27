@@ -108,4 +108,3 @@ mesnyankin::TStack* mesnyankin::solve(mesnyankin::TStack** PSt1, \
 	*PSt2 = St2;
 	return St3;
 }
-

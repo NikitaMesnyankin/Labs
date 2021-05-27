@@ -20,7 +20,7 @@ namespace mesnyankin
 	void output(TStack*&);
 	TStack* freeStack(TStack*);
 	TStack* solve(TStack**, TStack**, TStack*);
-
 }
 
 #endif
+
