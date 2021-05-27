@@ -11,7 +11,6 @@ int main()
 		ch = toupper(getchar());
 		getchar();
 		switch (ch) {
-			//----------первая часть: создание стека из текстового
 		case 'Z':
 		{
 			if (StackTop1) {
@@ -30,8 +29,6 @@ int main()
 			StackTop2 = mesnyankin::create(StackTop2);
 			break;
 		}
-
-				//----------вторая часть: вывод стеков на экран ------
 		case 'C':
 		{
 			printf("Stack 1:\n");
@@ -50,10 +47,11 @@ int main()
 			mesnyankin::output(StackTop3);
 			break;
 		}
-			//----------третья часть: решение задачи -------------
-		case 'A': StackTop3 = mesnyankin::solve(&StackTop1, &StackTop2, StackTop3);
+		case 'A':
+		{
+			StackTop3 = mesnyankin::solve(&StackTop1, &StackTop2, StackTop3);
 			break;
-			//----------четвертая часть: освобождение памяти -----
+		}
 		case 'S':
 		{
 			StackTop1 = mesnyankin::freeStack(StackTop1);
@@ -77,10 +75,11 @@ int main()
 			return 0;
 		}
 		default:
+		{
 			printf("No such command...\n");
 			break;
 		}
-
+		}
 	} while (ch != 'E');
 	_CrtDumpMemoryLeaks;
 	return 0;
