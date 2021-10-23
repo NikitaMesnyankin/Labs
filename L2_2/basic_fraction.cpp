@@ -1,13 +1,25 @@
 #include "basic_fraction.h"
 
+int mesnyankin::correctInput()
+{
+	int m = sqrt(INT_MIN), M = sqrt(INT_MAX), value;
+	for (;;) {
+		if ((std::cin >> value).good()) return std::ranges::clamp(value, m, M);
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cout << "Incorrect input! Repeat!..\n";
+		}
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+}
+
 mesnyankin::BasicFraction::BasicFraction() :
 	numerator_(0),
 	denominator_(1)
 {
-	std::cout << "Created default basic fraction 0/1" << std::endl;
 }
 
-mesnyankin::BasicFraction::BasicFraction(__int16 numerator, __int16 denominator) :
+mesnyankin::BasicFraction::BasicFraction(int numerator, int denominator) :
 	numerator_(numerator),
 	denominator_(denominator)
 {
@@ -21,14 +33,12 @@ mesnyankin::BasicFraction::BasicFraction(const BasicFraction& source) :
 	numerator_(source.numerator_),
 	denominator_(source.denominator_)
 {
-	std::cout << "Worked copy assignment constructor!" << std::endl;
 }
 
 mesnyankin::BasicFraction::BasicFraction(BasicFraction&& source) noexcept :
 	numerator_(std::move(source.numerator_)),
 	denominator_(std::move(source.denominator_))
 {
-	std::cout << "Worked move assignment constructor!" << std::endl;
 }
 
 mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator =(const BasicFraction& rhs)
@@ -38,8 +48,6 @@ mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator =(const BasicFrac
 		this->numerator_ = rhs.numerator_;
 		this->denominator_ = rhs.denominator_;
 	}
-
-	std::cout << "Worked copy assignment!" << std::endl;
 	return *this;
 }
 
@@ -47,18 +55,18 @@ mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator =(BasicFraction&&
 {
 	this->numerator_ = std::move(rhs.numerator_);
 	this->denominator_ = std::move(rhs.denominator_);
-	std::cout << "Worked noexcept move assignment!" << std::endl;
 	return *this;
 }
 
 mesnyankin::BasicFraction mesnyankin::BasicFraction::operator +(const BasicFraction& rhs)
 {
-	this->numerator_ = this->numerator_ * rhs.denominator_ + rhs.numerator_ * this->denominator_;
-	this->denominator_ = this->denominator_ * rhs.denominator_;
+	int numerator = this->numerator_ * rhs.denominator_ + rhs.numerator_ * this->denominator_,
+	denominator = this->denominator_ * rhs.denominator_;
 
-	this->numerator_ /= std::gcd(this->numerator_, this->denominator_);
-	this->denominator_ /= std::gcd(this->numerator_, this->denominator_);
-	return *this;
+	int gcd = std::gcd(numerator, denominator);
+	numerator /= gcd;
+	denominator /= gcd;
+	return BasicFraction(numerator, denominator);
 }
 
 mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator +=(const BasicFraction& rhs)
@@ -66,19 +74,21 @@ mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator +=(const BasicFra
 	this->numerator_ = this->numerator_ * rhs.denominator_ + rhs.numerator_ * this->denominator_;
 	this->denominator_ = this->denominator_ * rhs.denominator_;
 
-	this->numerator_ /= std::gcd(this->numerator_, this->denominator_);
-	this->denominator_ /= std::gcd(this->numerator_, this->denominator_);
+	int gcd = std::gcd(this->numerator_, this->denominator_);
+	this->numerator_ /= gcd;
+	this->denominator_ /= gcd;
 	return *this;
 }
 
 mesnyankin::BasicFraction mesnyankin::BasicFraction::operator -(const BasicFraction& rhs)
 {
-	this->numerator_ = this->numerator_ * rhs.denominator_ - rhs.numerator_ * this->denominator_;
-	this->denominator_ = this->denominator_ * rhs.denominator_;
+	int numerator = this->numerator_ * rhs.denominator_ - rhs.numerator_ * this->denominator_,
+		denominator = this->denominator_ * rhs.denominator_;
 
-	this->numerator_ /= std::gcd(this->numerator_, this->denominator_);
-	this->denominator_ /= std::gcd(this->numerator_, this->denominator_);
-	return *this;
+	int gcd = std::gcd(numerator, denominator);
+	numerator /= gcd;
+	denominator /= gcd;
+	return BasicFraction(numerator, denominator);
 }
 
 mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator -=(const BasicFraction& rhs)
@@ -86,33 +96,37 @@ mesnyankin::BasicFraction& mesnyankin::BasicFraction::operator -=(const BasicFra
 	this->numerator_ = this->numerator_ * rhs.denominator_ - rhs.numerator_ * this->denominator_;
 	this->denominator_ = this->denominator_ * rhs.denominator_;
 
-	this->numerator_ /= std::gcd(this->numerator_, this->denominator_);
-	this->denominator_ /= std::gcd(this->numerator_, this->denominator_);
+	int gcd = std::gcd(this->numerator_, this->denominator_);
+	this->numerator_ /= gcd;
+	this->denominator_ /= gcd;
 	return *this;
 }
 
-__int16 mesnyankin::BasicFraction::getNumerator() const
+int mesnyankin::BasicFraction::getNumerator() const
 {
 	return numerator_;
 }
 
-__int16 mesnyankin::BasicFraction::getDenominator() const
+int mesnyankin::BasicFraction::getDenominator() const
 {
 	return denominator_;
 }
 
-
-
-template<typename T>
-inline mesnyankin::BasicFraction mesnyankin::BasicFraction::operator -(const T &rhs)
+void mesnyankin::BasicFraction::setNumerator(int numerator)
 {
-	if (!(std::is_arithmetic(rhs)))
-	{
-		throw std::invalid_argument("Invalid ariphmetic type!");
-	}
-	this->numerator_ = this->numerator_ - static_cast<__int16>(rhs) * this->denominator_;
-	this->numerator_ /= std::gcd(this->numerator_, this->denominator_);
-	this->denominator_ /= std::gcd(this->numerator_, this->denominator_);
-
-	return *this;
+	this->numerator_ = numerator;
 }
+
+void mesnyankin::BasicFraction::setDenominator(int denominator)
+{
+	if (denominator == 0) {
+		throw std::invalid_argument("Denominator cannot be zero!");
+	}
+	this->denominator_ = denominator;
+}
+
+void mesnyankin::BasicFraction::showFraction() const
+{
+	std::cout << this->numerator_ << "/" << this->denominator_ << std::endl;
+}
+
