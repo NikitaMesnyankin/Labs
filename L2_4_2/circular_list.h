@@ -4,45 +4,30 @@
 #include <list>
 #include <iterator>
 #include <string>
+#include <tuple>
 #include <iostream>
 #include <boost/circular_buffer.hpp>
 
-struct driverCard
-{
-	std::string number;
-	std::string driverName;
-	std::string marschruteNumber;
-	bool isOnWay;
-};
+typedef std::tuple<std::string, std::string, std::string, bool> target_tuple;
 
 namespace mesnyankin
 {
-	driverCard correctInput()
-	{
-		driverCard data;
-		std::cout << "Enter autobus number..." << std::endl;
-		std::cin >> data.number;
-		std::cout << "Enter driver name..." << std::endl;
-		std::cin >> data.driverName;
-		std::cout << "Enter marschrute number..." << std::endl;
-		std::cin >> data.marschruteNumber;
-		data.isOnWay = false;
-		return data;
-	}
+	target_tuple correctInput();
 
 	template <typename T>
 	class CircularList
 	{
 	public:
-		CircularList();
-		CircularList(const CircularList&);
-		CircularList(CircularList&&);
+		CircularList<T>();
+		CircularList<T>(const boost::circular_buffer<T>&);
+		CircularList<T>(const CircularList<T>&);
+		CircularList<T>(CircularList<T>&&) noexcept;
 
-		CircularList& operator=(const CircularList&);
-		CircularList& operator=(CircularList&&) noexcept;
+		CircularList<T>& operator=(const CircularList<T>&);
+		CircularList<T>& operator=(CircularList<T>&&) noexcept;
 
 		void showData() const;
-		~CircularList() = default;
+		~CircularList<T>() = default;
 	private:
 		boost::circular_buffer<T> buffer_;
 	};
