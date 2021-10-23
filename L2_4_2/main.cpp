@@ -2,8 +2,12 @@
 
 int main()
 {
-	driverCard data = mesnyankin::correctInput();
-	std::cout << data.number << " " << data.driverName << " " << data.marschruteNumber <<  " " 
-		<< data.isOnWay << std::endl;
+	target_tuple x = std::make_tuple("abc", "abc", "abc", true);
+	boost::circular_buffer<target_tuple> buffer(3);
+	buffer.push_back(x);
+	buffer.push_back(x);
+	buffer.push_back(x);
+	auto buf = mesnyankin::CircularList<target_tuple>();
+	//buf.showData();
 	return 0;
 }
