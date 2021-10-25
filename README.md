@@ -1,3 +1,2 @@
-# Labs
-My C++ Labs (2 semester)
-For private view & use only
+# C++ Repository
+This is my personal C++ repository I've created to learn C++
