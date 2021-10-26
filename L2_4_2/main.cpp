@@ -15,9 +15,8 @@ int main()
 		std::cout << "5. Output container data..." << std::endl;
 		std::cout << "6. Exit..." << std::endl;
 
-		std::cin.width(1);
-		std::cin >> s;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::getline(std::cin, s);
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "GET:" << s << std::endl;
 		choice =
 			(s.compare("1") == 0) ? 1 :
