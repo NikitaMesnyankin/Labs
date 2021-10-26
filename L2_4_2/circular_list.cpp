@@ -46,7 +46,7 @@ boost::circular_buffer<target_tuple> mesnyankin::generateDataSet()
 	{
 		buffer.push_back(std::make_tuple(autoNumbers[distrib(gen) - 1], initials[distrib(gen) - 1], routeNumbers[distrib(gen) - 1], genb()));
 	}
-	
+	std::cout << "Dataset successfully generated, processing..." << std::endl;
 	return buffer;
 }
 

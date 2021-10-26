@@ -16,8 +16,6 @@ int main()
 		std::cout << "6. Exit..." << std::endl;
 
 		std::getline(std::cin, s);
-		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "GET:" << s << std::endl;
 		choice =
 			(s.compare("1") == 0) ? 1 :
 			(s.compare("2") == 0) ? 2 :
