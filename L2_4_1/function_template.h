@@ -97,7 +97,7 @@ namespace mesnyankin
 		}
 		std::cout << std::endl;
 	}
-
+	
 	template <typename T>
 	void selectionSort(std::vector<T>& container)
 	{
@@ -115,7 +115,7 @@ namespace mesnyankin
 			if (min != j)
 			{
 				std::swap(container[j], container[min]);
-			}
+				}
 		}
 	}
 
@@ -127,9 +127,7 @@ namespace mesnyankin
 		{
 			std::cout << "1: Show container data..." << std::endl
 				<< "2: Count zeros in container..." << std::endl
-				<< "3: Count sum after minimum..." << std::endl
-				<< "4: Selection container sort..." << std::endl
-				<< "5: Back to element type select..." << std::endl;
+				<< "3: Count sum after minimum..." << std::endl;
 			std::cin.width(1);
 			std::cin >> choice;
 			switch (choice)
