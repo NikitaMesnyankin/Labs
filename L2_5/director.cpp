@@ -131,6 +131,19 @@ void mesnyankin::Director::dismiss(const Employee& empl)
 	mesnyankin::erase_from_eTVector(this->staff_, empl.getInitials());
 }
 
+void mesnyankin::Director::setStaff(const mesnyankin::eTVector& etv)
+{
+	if (mesnyankin::verificateETVector)
+	{
+		this->staff_ = etv;
+	}
+}
+
+mesnyankin::eTVector mesnyankin::Director::getStaff() const
+{
+	return this->staff_;
+}
+
 void mesnyankin::Director::showStaff() const
 {
 	outputETVector(this->staff_);

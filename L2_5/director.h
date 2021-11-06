@@ -5,7 +5,6 @@
 
 namespace mesnyankin
 {
-
 	class Director : public Employee
 	{
 	public:
@@ -29,6 +28,8 @@ namespace mesnyankin
 		void dismiss(const sArray&);
 		void dismiss(const Employee&);
 
+		eTVector getStaff() const;
+		void setStaff(const eTVector&);
 		void showStaff() const;
 	private:
 		eTVector staff_;
