@@ -82,8 +82,8 @@ inline void mesnyankin::CircularList<T>::push_back(const target_tuple& data)
 template<typename T>
 inline void mesnyankin::CircularList<T>::clear()
 {
+	std::cout << "Cleaning container..." << std::endl;
 	buffer_.clear();
-	std::cout << "Container successfully cleared..." << std::endl;
 }
 
 template<typename T>
@@ -246,8 +246,9 @@ void mesnyankin::CircularList<T>::showData() const
 			outputTuple(item);
 		}
 	}
-	else {
-		std::cout << "Container is empty!.. " << std::endl;
+	else
+	{
+		std::cout << "Container is empty!.." << std::endl;
 	}
 }
 
