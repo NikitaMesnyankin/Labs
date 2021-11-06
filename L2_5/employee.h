@@ -10,6 +10,7 @@ namespace mesnyankin
 	public:
 		sArray getInitials() const;
 		int getSalary() const;
+		eTuple getData() const;
 		void setInitials(const std::string&, const std::string&, const std::string&);
 		void setInitials(const sArray&);
 		void setData(const eTuple&);

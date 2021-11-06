@@ -66,6 +66,11 @@ int mesnyankin::Employee::getSalary() const
 	return salary_;
 }
 
+mesnyankin::eTuple mesnyankin::Employee::getData() const
+{
+	return std::make_tuple(initials_[0], initials_[1], initials_[2], salary_);
+}
+
 void mesnyankin::Employee::setInitials(const std::string& surname,
 		const std::string& name, const std::string& patronymic)
 {
