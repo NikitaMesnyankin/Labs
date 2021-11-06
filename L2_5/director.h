@@ -12,7 +12,6 @@ namespace mesnyankin
 		Director(const std::string&, const std::string&, const std::string&, int, const eTVector&);
 		Director(const sArray&, int, const eTVector&);
 		Director(const eTuple&, const eTVector&);
-
 		Director(const Director&);
 		Director(Director&&) noexcept;
 
@@ -30,7 +29,6 @@ namespace mesnyankin
 
 		eTVector getStaff() const;
 		void setStaff(const eTVector&);
-		void showStaff() const;
 	private:
 		eTVector staff_;
 	};

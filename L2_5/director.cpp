@@ -133,7 +133,7 @@ void mesnyankin::Director::dismiss(const Employee& empl)
 
 void mesnyankin::Director::setStaff(const mesnyankin::eTVector& etv)
 {
-	if (mesnyankin::verificateETVector())
+	if (mesnyankin::verificateETVector(etv))
 	{
 		this->staff_ = etv;
 	}
@@ -142,9 +142,4 @@ void mesnyankin::Director::setStaff(const mesnyankin::eTVector& etv)
 mesnyankin::eTVector mesnyankin::Director::getStaff() const
 {
 	return this->staff_;
-}
-
-void mesnyankin::Director::showStaff() const
-{
-	outputETVector(this->staff_);
 }
