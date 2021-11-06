@@ -10,6 +10,7 @@
 namespace mesnyankin
 {
 	typedef std::array<std::string, 3> sArray;
+	typedef std::vector<std::string> sVector;
 	typedef std::tuple<std::string, std::string, std::string, int> eTuple;
 	typedef std::vector<eTuple> eTVector;
 
@@ -65,11 +66,15 @@ namespace mesnyankin
 		return make_tuple(arr, value, std::make_index_sequence<tup_size>{});
 	}
 
+	void erase_from_sVector(sVector& sVec, const std::string& elem);
+	
 	void erase_from_eTVector(eTVector& etv, const sArray& sArr);
+
 
 	void outputETVector(const eTVector& etv);
 
 	bool verificateSArray(const sArray&);
+	bool verificateSVector(const sVector&);
 	bool verificateETuple(const eTuple&);
 	bool verificateETVector(const eTVector&);
 }

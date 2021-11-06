@@ -13,6 +13,23 @@ bool mesnyankin::verificateSArray(const mesnyankin::sArray& arr)
 	return (counter == 3) ? false : true;
 }
 
+bool mesnyankin::verificateSVector(const mesnyankin::sVector& sVec)
+{
+	if (sVec.empty())
+	{
+		return false;
+	}
+
+	for (const auto& item : sVec)
+	{
+		if (item.empty())
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 bool mesnyankin::verificateETuple(const mesnyankin::eTuple& tupleData)
 {
 	mesnyankin::sArray sArr;
@@ -35,6 +52,21 @@ bool mesnyankin::verificateETVector(const mesnyankin::eTVector& vector_data)
 		}
 	}
 	return true;
+}
+
+void mesnyankin::erase_from_sVector(mesnyankin::sVector& sVec, const std::string& elem)
+{
+	if (!(sVec.empty()))
+	{
+		for (auto it = sVec.begin(); it != sVec.end();) {
+			if (elem.compare(*it) == 0) {
+				it = sVec.erase(it);
+			}
+			else {
+				++it;
+			}
+		}
+	}
 }
 
 void mesnyankin::erase_from_eTVector(mesnyankin::eTVector& etv, const mesnyankin::sArray& sArr)
