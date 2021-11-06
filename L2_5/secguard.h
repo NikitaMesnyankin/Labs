@@ -1,3 +1,6 @@
+#ifndef SECGUARD_H
+#define SECGUARD_H
+
 #include "employee.h"
 
 namespace mesnyankin
@@ -22,4 +25,8 @@ namespace mesnyankin
 	private:
 		std::string defence_item_;
 	};
+
+	typedef std::vector<mesnyankin::SecGuard> scgrdVec;
 }
+
+#endif

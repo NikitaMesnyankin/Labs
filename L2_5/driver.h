@@ -35,6 +35,8 @@ namespace mesnyankin
 		sVector licences_;
 		sVector trucks_;
 	};
+
+	typedef std::vector<mesnyankin::Driver> drvrVec;
 }
 
 #endif

@@ -7,12 +7,16 @@
 #include <tuple>
 #include <vector>
 
+
+
 namespace mesnyankin
 {
 	typedef std::array<std::string, 3> sArray;
 	typedef std::vector<std::string> sVector;
 	typedef std::tuple<std::string, std::string, std::string, int> eTuple;
 	typedef std::vector<eTuple> eTVector;
+
+
 
 	template <size_t i = 0, typename... Ts>
 	constexpr bool compareData(const std::tuple<Ts...>& tup, const sArray& arr)
