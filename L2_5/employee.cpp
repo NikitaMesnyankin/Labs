@@ -33,7 +33,7 @@ mesnyankin::Employee::Employee(const sArray& initials, int salary) :
 	{
 		throw std::invalid_argument("Salary must be positive non-zero value!");
 	} else {
-		if ((initials_.empty()) || (mesnyankin::verificateSArray(initials_))) {
+		if ((initials_.empty()) || (!(mesnyankin::verificateSArray(initials_)))) {
 			throw std::invalid_argument("Initials vector is empty or filled with empty strings!");
 		}
 	}
