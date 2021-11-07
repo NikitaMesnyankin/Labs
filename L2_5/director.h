@@ -26,6 +26,7 @@ namespace mesnyankin
 		void dismiss(const std::string&, const std::string&, const std::string&);
 		void dismiss(const sArray&);
 		void dismiss(const Employee&);
+		void dismiss_all();
 
 		eTVector getStaff() const;
 		void setStaff(const eTVector&);
