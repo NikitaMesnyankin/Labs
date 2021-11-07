@@ -36,7 +36,7 @@ namespace mesnyankin
 		sVector trucks_;
 	};
 
-	typedef std::vector<mesnyankin::Driver> drvrVec;
+	typedef std::vector<mesnyankin::Driver&> drvrVec;
 }
 
 #endif

@@ -26,7 +26,7 @@ namespace mesnyankin
 		std::string defence_item_;
 	};
 
-	typedef std::vector<mesnyankin::SecGuard> scgrdVec;
+	typedef std::vector<mesnyankin::SecGuard&> scgrdVec;
 }
 
 #endif
