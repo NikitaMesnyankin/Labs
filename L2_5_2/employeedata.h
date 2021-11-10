@@ -11,6 +11,7 @@ namespace mesnyankin
 	typedef std::tuple<std::string, std::string, std::string, int> DTuple;
 	class EmployeeData : public Initials, public Payments
 	{
+	public:
 		EmployeeData() = default;
 		EmployeeData(const std::string&, const std::string&, const std::string&, int);
 		EmployeeData(const EmployeeData&) = default;
