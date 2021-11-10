@@ -12,7 +12,7 @@ mesnyankin::Initials::Initials(const std::string& surname, const std::string& na
 	}
 }
 
-void mesnyankin::Initials::setData(const std::string& surname, const std::string& name, const std::string& patronymic)
+void mesnyankin::Initials::setInitials(const std::string& surname, const std::string& name, const std::string& patronymic)
 {
 	*this = mesnyankin::Initials(surname, name, patronymic);
 }

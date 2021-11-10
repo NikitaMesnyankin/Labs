@@ -16,7 +16,7 @@ namespace mesnyankin
 		Initials& operator=(const Initials&) = default;
 		Initials& operator=(Initials&&) = default;
 
-		void setData(const std::string&, const std::string&, const std::string&);
+		void setInitials(const std::string&, const std::string&, const std::string&);
 		std::string getSurname() const;
 		std::string getName() const;
 		std::string getPatronymic() const;
