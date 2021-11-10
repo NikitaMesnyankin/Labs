@@ -6,13 +6,13 @@ namespace mesnyankin
 	class Payments
 	{
 	public:
-		Payments();
+		Payments() = default;
 		Payments(int);
-		Payments(const Payments&);
-		Payments(Payments&&);
+		Payments(const Payments&) = default;
+		Payments(Payments&&) = default;
 
-		Payments& operator=(const Payments&);
-		Payments& operator=(Payments&&);
+		Payments& operator=(const Payments&) = default;
+		Payments& operator=(Payments&&) = default;
 
 		void setSalary(int);
 		int getSalary() const;

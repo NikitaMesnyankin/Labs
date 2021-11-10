@@ -8,13 +8,13 @@ namespace mesnyankin
 	class Initials
 	{
 	public:
-		Initials();
+		Initials() = default;
 		Initials(const std::string&, const std::string&, const std::string&);
-		Initials(const Initials&);
-		Initials(Initials&&);
+		Initials(const Initials&) = default;
+		Initials(Initials&&) = default;
 
-		Initials& operator=(const Initials&);
-		Initials& operator=(Initials&&);
+		Initials& operator=(const Initials&) = default;
+		Initials& operator=(Initials&&) = default;
 
 		void setData(const std::string&, const std::string&, const std::string&);
 		std::string getSurname() const;
@@ -22,9 +22,9 @@ namespace mesnyankin
 		std::string getPatronymic() const;
 
 	private:
-		std::string surname;
-		std::string name;
-		std::string patronymic;
+		std::string surname_;
+		std::string name_;
+		std::string patronymic_;
 	};
 }
 
