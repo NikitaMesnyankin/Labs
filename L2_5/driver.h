@@ -6,7 +6,7 @@
 
 namespace mesnyankin
 {
-	class Driver : public Employee
+	class Driver : virtual public Employee
 	{
 	public:
 		Driver();
@@ -36,7 +36,7 @@ namespace mesnyankin
 		sVector trucks_;
 	};
 
-	typedef std::vector<mesnyankin::Driver&> drvrVec;
+	typedef std::vector<mesnyankin::Driver> drvrVec;
 }
 
 #endif
