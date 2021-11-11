@@ -9,7 +9,6 @@ namespace mesnyankin
 {
     class Secretary : public Employee
     {
-    public:
 	public:
 		Secretary();
 		Secretary(const std::string&, const std::string&, const std::string&, int);
