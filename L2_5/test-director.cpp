@@ -105,10 +105,10 @@ BOOST_AUTO_TEST_CASE(CorrectEmployeeAdding)
 	obj1.add("Z", "X", "C", 10); //adding 3 strings and int
 	obj1.add("Z", "X", "C", 15); //adding 2 times
 
-	mesnyankin::sArray zxc{ "Z", "X", "C" };
+	mesnyankin::sArray arr{ "Z", "X", "C" };
 	for (const auto& item : obj1.getStaff())
 	{
-		BOOST_CHECK_EQUAL(mesnyankin::compareData(item, zxc), true);
+		BOOST_CHECK_EQUAL(mesnyankin::compareData(item, arr), true);
 	}
 }
 
