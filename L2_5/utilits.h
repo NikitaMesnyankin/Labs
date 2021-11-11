@@ -16,8 +16,6 @@ namespace mesnyankin
 	typedef std::tuple<std::string, std::string, std::string, int> eTuple;
 	typedef std::vector<eTuple> eTVector;
 
-
-
 	template <size_t i = 0, typename... Ts>
 	constexpr bool compareData(const std::tuple<Ts...>& tup, const sArray& arr)
 	{
